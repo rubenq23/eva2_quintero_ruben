@@ -159,3 +159,136 @@ footer p {
         font-size: 2.5rem;
     }
 }
+
+/* --- posicionamiento y estructura del layout --- */
+
+/* modifique el navbar-nav para asegurar que use todo el ancho y force el centrado total 
+   de los botones en el medio del viewport 
+*/
+.navbar-nav {
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    list-style: none; 
+    padding: 0;
+    margin: 0 auto; 
+    gap: 15px; 
+    width: 100%; 
+}
+
+/* modifique el contenedor padre del menu porque bootstrap a veces lo corta a la izquierda, 
+   con esto aseguro que el contenido flote al centro exacto 
+*/
+.navbar-collapse {
+    display: flex !important; 
+    justify-content: center !important; 
+    width: 100%;
+}
+
+/* mantengo los nav-link como botones con recuadro para que sigan la estetica 
+   de los otros botones de la pagina 
+*/
+.nav-item .nav-link {
+    background-color: var(--primario); 
+    color: white !important; 
+    padding: 10px 20px !important;
+    border-radius: 8px; 
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+    border: 2px solid transparent;
+}
+
+/* mantengo el efecto hover para la interactividad */
+.nav-item .nav-link:hover {
+    background-color: transparent;
+    color: var(--primario) !important;
+    border-color: var(--primario);
+    transform: translateY(-3px); 
+}
+
+/* mantengo el color verde para la seccion activa */
+.nav-item .nav-link.active {
+    background-color: var(--secundario) !important; 
+    border-color: var(--secundario);
+}
+
+/* modifique el brand para que este arriba del menu y centrado */
+.navbar-brand {
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin: 0 auto 15px auto; 
+    font-size: 2rem; 
+}
+
+/* configuramos el contenedor principal como una grilla */
+main {
+    display: grid;
+    grid-template-columns: 1fr 320px; 
+    gap: 30px;
+    max-width: 1300px;
+    margin: 0 auto; 
+    padding: 40px 20px;
+}
+
+/* modifique el card-body para darle mas padding interno. 
+   esto hace que los textos no choquen con los bordes del recuadro 
+*/
+.card-body {
+    padding: 2rem !important; /* mas espacio entre el borde y el texto */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* modifique el link de "ir al tramite" para que se coloque al medio del contenedor.
+   le puse margin-top auto para que siempre se vaya al fondo y margin-x auto para centrarlo 
+*/
+.card-body .btn {
+    margin: 1.5rem auto 0 auto; /* arriba le da aire y auto a los lados lo centra */
+    display: table; /* esto ayuda a que el boton solo ocupe su ancho y se centre bien */
+    width: fit-content;
+}
+
+/* las secciones de contenido principal van a la izquierda */
+#inicio, #tramites {
+    grid-column: 1;
+}
+
+/* barra lateral (aside) simulada */
+#noticias {
+    grid-column: 2;
+    grid-row: 1 / span 2; 
+    align-self: start;
+    position: sticky; 
+    top: 100px;
+}
+
+/* el contacto lo dejamos abajo de todo ocupando ambas columnas */
+#contacto {
+    grid-column: 1 / span 2;
+    margin-top: 50px;
+    padding: 80px 0;
+}
+
+/* centrado del formulario */
+#form-contacto {
+    max-width: 550px;
+    margin: 0 auto; 
+}
+
+/* fijamos el header arriba */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: white; 
+}
+
+/* alineacion de contenedores */
+.container {
+    max-width: 1200px;
+}
+
