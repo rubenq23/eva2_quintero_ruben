@@ -126,47 +126,45 @@ body {
     margin-top: 5px;
 }
 
-/* --- footer --- */
-footer {
-    background-color: var(--claro);
-}
-
-footer p {
-    margin-bottom: 5px;
-}
-
-/* utilidades rapidas */
-.btn-primary {
-    background-color: var(--primario);
-    border: none;
-    padding: 12px 25px;
-    font-weight: 700;
-}
-
-.btn-success {
-    background-color: var(--secundario);
-    border: none;
-    padding: 12px 30px;
-    font-weight: 700;
-}
-
-/* esto es para que en pantallas chicas el padding no sea tan exagerado */
-@media (max-width: 768px) {
-    #inicio {
-        padding: 60px 0;
-    }
-    .display-4 {
-        font-size: 2.5rem;
-    }
-}
-
 /* --- posicionamiento y estructura del layout --- */
 
-/* modifique el navbar-nav para asegurar que use todo el ancho y force el centrado total 
-   de los botones en el medio del viewport 
+/* modifique el contenedor de la navegacion para asegurar el centrado absoluto 
+   y oculte el boton de menu movil (hamburguesa) que estaba sobrando y molestando visualmente 
 */
+.navbar-toggler {
+    display: none !important; 
+}
+
+.navbar .container {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%; 
+}
+
+/* modifique el navbar-brand para que el texto de CHOLCHOL quede justo al medio */
+.navbar-brand {
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin: 0 0 15px 0 !important; 
+    font-size: 2rem;
+}
+
+/* aseguro que el colapso de bootstrap no interfiera con el centrado del menu flex */
+.navbar-collapse {
+    display: flex !important;
+    justify-content: center !important;
+    flex-basis: auto;
+    width: 100%;
+}
+
+/* modifique el navbar-nav para que los botones esten en linea y perfectamente centrados */
 .navbar-nav {
     display: flex; 
+    flex-direction: row; 
     justify-content: center; 
     align-items: center;
     list-style: none; 
@@ -176,18 +174,7 @@ footer p {
     width: 100%; 
 }
 
-/* modifique el contenedor padre del menu porque bootstrap a veces lo corta a la izquierda, 
-   con esto aseguro que el contenido flote al centro exacto 
-*/
-.navbar-collapse {
-    display: flex !important; 
-    justify-content: center !important; 
-    width: 100%;
-}
-
-/* mantengo los nav-link como botones con recuadro para que sigan la estetica 
-   de los otros botones de la pagina 
-*/
+/* mantengo los nav-link como botones con recuadro para que sigan la estetica institucional */
 .nav-item .nav-link {
     background-color: var(--primario); 
     color: white !important; 
@@ -200,7 +187,6 @@ footer p {
     border: 2px solid transparent;
 }
 
-/* mantengo el efecto hover para la interactividad */
 .nav-item .nav-link:hover {
     background-color: transparent;
     color: var(--primario) !important;
@@ -208,22 +194,27 @@ footer p {
     transform: translateY(-3px); 
 }
 
-/* mantengo el color verde para la seccion activa */
 .nav-item .nav-link.active {
     background-color: var(--secundario) !important; 
     border-color: var(--secundario);
 }
 
-/* modifique el brand para que este arriba del menu y centrado */
-.navbar-brand {
-    display: block;
-    text-align: center;
-    width: 100%;
-    margin: 0 auto 15px auto; 
-    font-size: 2rem; 
+/* modifique el boton de descubre mas para devolverle su recuadro verde y estilos de boton pro */
+.btn-success {
+    background-color: var(--secundario) !important; 
+    border: none !important;
+    padding: 12px 30px !important;
+    color: white !important;
+    font-weight: 700;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
 }
 
-/* configuramos el contenedor principal como una grilla */
+.btn-success:hover {
+    background-color: #218838 !important; 
+}
+
+/* configuramos el contenedor principal como una grilla para article y aside */
 main {
     display: grid;
     grid-template-columns: 1fr 320px; 
@@ -233,22 +224,17 @@ main {
     padding: 40px 20px;
 }
 
-/* modifique el card-body para darle mas padding interno. 
-   esto hace que los textos no choquen con los bordes del recuadro 
-*/
+/* mantengo el padding de las cards y el centrado del boton ir al tramite */
 .card-body {
-    padding: 2rem !important; /* mas espacio entre el borde y el texto */
+    padding: 2rem !important; 
     display: flex;
     flex-direction: column;
     height: 100%;
 }
 
-/* modifique el link de "ir al tramite" para que se coloque al medio del contenedor.
-   le puse margin-top auto para que siempre se vaya al fondo y margin-x auto para centrarlo 
-*/
 .card-body .btn {
-    margin: 1.5rem auto 0 auto; /* arriba le da aire y auto a los lados lo centra */
-    display: table; /* esto ayuda a que el boton solo ocupe su ancho y se centre bien */
+    margin: 1.5rem auto 0 auto; 
+    display: table; 
     width: fit-content;
 }
 
@@ -266,17 +252,59 @@ main {
     top: 100px;
 }
 
-/* el contacto lo dejamos abajo de todo ocupando ambas columnas */
+/* modifique el contenedor de contacto para que el titulo quede centrado */
 #contacto {
     grid-column: 1 / span 2;
     margin-top: 50px;
     padding: 80px 0;
+    text-align: center;
 }
 
-/* centrado del formulario */
+/* modifique el formulario para que use flexbox en columna centrada */
 #form-contacto {
     max-width: 550px;
     margin: 0 auto; 
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+/* modifique los bloques mb-3 para centrar labels e inputs */
+#form-contacto .mb-3 {
+    width: 100%; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* modifique los campos de texto para que esten centrados */
+#form-contacto .form-control {
+    width: 100%;
+    max-width: 450px; 
+    text-align: center;
+}
+
+/* modifique el boton de enviar solicitud para que recupere su recuadro de color azul institucional, 
+   forzando el color de fondo y borde para que no se vea blanco ni pierda su estetica 
+*/
+#form-contacto button[type="submit"] {
+    background-color: var(--primario) !important;
+    border: 2px solid var(--primario) !important;
+    padding: 12px 30px !important;
+    color: white !important;
+    font-weight: 700;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 450px;
+    margin: 20px auto 0 auto;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+#form-contacto button[type="submit"]:hover {
+    background-color: transparent !important;
+    color: var(--primario) !important;
+    transform: scale(1.02);
 }
 
 /* fijamos el header arriba */
@@ -287,8 +315,31 @@ header {
     background-color: white; 
 }
 
-/* alineacion de contenedores */
+/* modifique el footer para centrarlo y darle el fondo gris suave */
+footer {
+    background-color: #f1f3f5; 
+    width: 100%;
+    padding: 30px 0;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    border-top: 1px solid var(--borde);
+}
+
+footer .container {
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+footer p {
+    margin: 5px 0;
+    color: #6c757d; 
+}
+
+/* alineacion de contenedores generales */
 .container {
     max-width: 1200px;
 }
-
