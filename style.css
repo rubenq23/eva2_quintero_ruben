@@ -1,0 +1,161 @@
+/* configuracion general para que todo se vea limpio desde el inicio */
+:root {
+    --primario: #0056b3; /* un azul institucional mas fuerte */
+    --secundario: #28a745; /* verde para botones de accion */
+    --oscuro: #212529; /* para el texto principal y fondos oscuros */
+    --claro: #f8f9fa; /* para fondos suaves */
+    --borde: #dee2e6;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--oscuro);
+    line-height: 1.6;
+    scroll-behavior: smooth; /* para que cuando pinches el menu baje suavecito */
+}
+
+/* --- encabezado y navegacion --- */
+.navbar {
+    padding: 1rem 0;
+    transition: all 0.3s ease;
+}
+
+.navbar-brand {
+    letter-spacing: 1px;
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    font-weight: 400;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+/* efecto simple para los links del menu */
+.nav-link:hover {
+    color: #ffc107 !important; /* un toque de amarillo al pasar el mouse */
+}
+
+/* --- seccion inicio (hero) --- */
+#inicio {
+    padding: 100px 0;
+    background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), 
+                url('https://images.unsplash.com/photo-1451187530220-472bd7d84ef9?q=80&w=2070') no-repeat center/cover;
+    /* el degradado es para que el texto sea legible sobre cualquier imagen */
+}
+
+#inicio h1 {
+    color: var(--primario);
+    margin-bottom: 1.5rem;
+}
+
+/* --- seccion tramites (cards) --- */
+#tramites {
+    background-color: white;
+}
+
+#titulo-tramites {
+    position: relative;
+    padding-bottom: 15px;
+}
+
+/* una rayita decorativa debajo del titulo */
+#titulo-tramites::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background-color: var(--secundario);
+    border-radius: 2px;
+}
+
+/* estilos para las tarjetas de tramites */
+.card {
+    transition: all 0.3s ease; /* esto ayuda al efecto del script.js */
+    border: 1px solid var(--borde) !important;
+}
+
+.card:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+}
+
+.card-body h3 {
+    color: var(--primario);
+    font-weight: 700;
+}
+
+/* --- seccion contacto --- */
+#contacto {
+    background-color: #1a1d20 !important; /* un gris casi negro mas elegante */
+}
+
+#contacto h2 {
+    color: white;
+}
+
+.form-label {
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #adb5bd;
+}
+
+/* estilos para los inputs para que no se vean tan default */
+.form-control {
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    background-color: #2b3035;
+    color: white;
+}
+
+.form-control:focus {
+    background-color: #343a40;
+    color: white;
+    border-color: var(--primario);
+    box-shadow: none;
+}
+
+/* ajuste para el feedback de validacion */
+.invalid-feedback {
+    font-size: 0.85rem;
+    margin-top: 5px;
+}
+
+/* --- footer --- */
+footer {
+    background-color: var(--claro);
+}
+
+footer p {
+    margin-bottom: 5px;
+}
+
+/* utilidades rapidas */
+.btn-primary {
+    background-color: var(--primario);
+    border: none;
+    padding: 12px 25px;
+    font-weight: 700;
+}
+
+.btn-success {
+    background-color: var(--secundario);
+    border: none;
+    padding: 12px 30px;
+    font-weight: 700;
+}
+
+/* esto es para que en pantallas chicas el padding no sea tan exagerado */
+@media (max-width: 768px) {
+    #inicio {
+        padding: 60px 0;
+    }
+    .display-4 {
+        font-size: 2.5rem;
+    }
+}
